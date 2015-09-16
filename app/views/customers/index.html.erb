@@ -1,0 +1,28 @@
+<%= form_tag({}, :method => :get) do %>
+  <div class="field">
+    <%= label_tag %{Enter pet's name:} %><br>
+    <%= text_field_tag :name %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Submit" %>
+  </div>
+<% end %>
+
+<% if params[:name].present? %>
+	<% if @appointment.present? %>
+		<p>
+		  <strong>Pet:</strong>
+		  <%= @appointment.pet %>
+		</p>
+		<p>
+		  <strong>Date of visit:</strong>
+		  <%= @appointment.date_of_visit %>
+		</p>
+		<p>
+		  <strong>Reason for visit:</strong>
+		  <%= @appointment.reason_for_visit %>
+		</p>
+	<% else %>
+		<%= params[:name] %> does not have an appointment.
+	<% end %>
+<% end %>
